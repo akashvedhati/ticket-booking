@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bus ticket booking</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#bookingDetails {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a class="nav-link active" aria-current="page" href="home.html">home</a>
+        <a class="nav-link" href="flight.html">flight</a>
+        <a class="nav-link" href="bus.html">bus</a>
+        <a class="nav-link active" aria-current="page" href="train.html">train</a>
+        <a class="nav-link active" aria-current="page" href="hotel.html">hotels</a>
+      </nav><hr>
+    
+      
+      <div class="container">
+        <h1>Bus Ticket Booking</h1>
+        <form id="bookingForm">
+            <label for="fromStation">From:</label>
+            <input type="text" id="fromStation" name="fromStation" required>
+            
+            <label for="toStation">To:</label>
+            <input type="text" id="toStation" name="toStation" required>
+            
+            <label for="journeyDate">Journey Date:</label>
+            <input type="date" id="journeyDate" name="journeyDate" required>
+            
+            <label for="numTickets">Number of Tickets:</label>
+            <input type="number" id="numTickets" name="numTickets" min="1" required>
+            
+            <button type="submit">Book Ticket</button>
+        </form>
+        <div id="bookingDetails"></div>
+    </div>
+
+    <script>
+        // script.js
+document.getElementById('bookingForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const fromStation = document.getElementById('fromStation').value;
+    const toStation = document.getElementById('toStation').value;
+    const journeyDate = document.getElementById('journeyDate').value;
+    const numTickets = document.getElementById('numTickets').value;
+
+    const bookingDetails = `
+        <h2>Booking Details</h2>
+        <p><strong>From:</strong> ${fromStation}</p>
+        <p><strong>To:</strong> ${toStation}</p>
+        <p><strong>Journey Date:</strong> ${journeyDate}</p>
+        <p><strong>Number of Tickets:</strong> ${numTickets}</p>
+    `;
+
+    document.getElementById('bookingDetails').innerHTML = bookingDetails;
+});
+
+    </script>
+</body>
+</html>

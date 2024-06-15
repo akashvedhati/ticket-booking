@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booking website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <a class="nav-link active" aria-current="page" href="home.html">home</a>
+        <a class="nav-link" href="flight.html">flight</a>
+        <a class="nav-link" href="bus.html">bus</a>
+        <a class="nav-link active" aria-current="page" href="train.html">train</a>
+        <a class="nav-link active" aria-current="page" href="hotel.html">hotel</a>
+      </nav><hr>
+
+    <div class="container">
+        <h2>SIGIN</h2><hr>
+        <form id="signin-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><hr>
+            <button type="submit">Sign In</button>
+            <div id="message"></div>
+        </form>
+    </div>
+ <script src="signin.js"></script>
+<script>
+    document.getElementById('signin-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Simple client-side validation
+    if (email === '' || password === '') {
+        document.getElementById('message').textContent = 'All fields are required.';
+        return;
+    }
+
+    // Simulate server-side authentication
+    // In a real application, you would send a request to the server here
+    if (email === 'user@example.com' && password === 'password123') {
+        document.getElementById('message').textContent = 'Sign in successful!';
+        document.getElementById('message').style.color = 'green';
+
+        // Redirect to home page after successful sign-in
+        setTimeout(function() {
+            window.location.href = 'home.html';
+        }, 1000); // Wait for 1 second before redirecting
+    } else {
+        document.getElementById('message').textContent = 'Invalid email or password.';
+    }
+});
+</script>
+  <br>
+
+   <img id="image" src="https://wallpapercave.com/wp/wp2722928.jpg" alt="">
+
+</body>
+</html>

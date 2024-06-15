@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hotel booking</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.hidden {
+    display: none;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a class="nav-link active" aria-current="page" href="home.html">home</a>
+        <a class="nav-link" href="flight.html">flight</a>
+        <a class="nav-link" href="bus.html">bus</a>
+        <a class="nav-link active" aria-current="page" href="train.html">train</a>
+        <a class="nav-link active" aria-current="page" href="hotel.html">hotels</a>
+      </nav>
+      <hr>
+      <hr>
+    <div class="container">
+        <h1>Hotel Booking Form</h1>
+        <form id="bookingForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="checkin">Check-in Date:</label>
+            <input type="date" id="checkin" name="checkin" required>
+
+            <label for="checkout">Check-out Date:</label>
+            <input type="date" id="checkout" name="checkout" required>
+
+            <label for="guests">Number of Guests:</label>
+            <input type="number" id="guests" name="guests" required min="1">
+
+            <button type="submit">Book Now</button>
+        </form>
+        <div id="confirmation" class="hidden">
+            <h2>Booking Confirmation</h2>
+            <p id="confirmMessage"></p>
+        </div>
+    </div>
+
+    
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const checkin = document.getElementById('checkin').value;
+    const checkout = document.getElementById('checkout').value;
+    const guests = document.getElementById('guests').value;
+
+    const confirmMessage = `
+        Thank you, ${name}! Your booking is confirmed.
+        <br>Email: ${email}
+        <br>Check-in Date: ${checkin}
+        <br>Check-out Date: ${checkout}
+        <br>Number of Guests: ${guests}
+    `;
+
+    document.getElementById('confirmMessage').innerHTML = confirmMessage;
+    document.getElementById('confirmation').classList.remove('hidden');
+    document.getElementById('bookingForm').classList.add('hidden');
+});
+
+    </script>
+</body>
+</html>
